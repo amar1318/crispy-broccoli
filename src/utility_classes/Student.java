@@ -8,7 +8,7 @@ public class Student {
     public Student() {
     }
     
-    public Student(int id, String username, String password) {
+    public Student(String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;

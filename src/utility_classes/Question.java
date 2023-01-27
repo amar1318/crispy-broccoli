@@ -1,7 +1,7 @@
 package utility_classes;
 
 public class Question {
-    private String question;
+    private static String question;
     private String opt1;
     private String opt2;
     private String opt3;
