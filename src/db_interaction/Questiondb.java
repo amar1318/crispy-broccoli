@@ -35,7 +35,7 @@ public class Questiondb {
         		question.setQuestion(rs.getString("opt 3"));
         		question.setQuestion(rs.getString("opt 4"));
         		question.setAns(rs.getInt("ans"));
-        		Question.add(question);
+        		a1.add(question);
         		
         	}
         }
@@ -57,5 +57,4 @@ public class Questiondb {
     	}
     }
 }
-
 
