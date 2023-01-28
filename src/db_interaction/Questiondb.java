@@ -56,7 +56,40 @@ statement.close();
 
         return questions;
     }
+	 public class Questiondb2 {
+	PreparedStatement prs=null;
+	Connection con=null;
+	public void insertQuestions(String username,String score) {
+		 try {
+			 ConnectionTest connectionTest=new ConnectionTest();
+			 con=connectionTest.getConnectionDetails();
+			 prs=con.prepareStatement("insert into project__questiondb(username,score)values(?,?)");
+			 prs.setString(1, "username");
+			 prs.setString(2,score);
+			 int i=prs.executeUpdate();
+			 System.out.println("Done"+i);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	 }
+	
+	 public static void main(String[] args) throws SQLException {
+		 Scanner sc=new Scanner(System.in);
+		 for(int i=0;i<3;i++) {
+			 System.out.println("enter username");
+			 String userName=sc.next();
+			 System.out.println("enter score");
+			 String score=sc.next();
+			 
+			 Questiondb2 qs=new Questiondb2();
+			 qs.insertData(userName,score);
+		 }
+		 sc.close();
+	
+		 
 
-    public static void saveScore(String username, int score) {
-    }
+	}
+
 }
+
