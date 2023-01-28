@@ -15,7 +15,16 @@ public class Questiondb {
     }
 
     public static List<Question> getRandomQuestions(){
-        List<Question> questions = new ArrayList<>();
+        ArrayList<Question> a1= new ArrayList<>();
+        a1.add();
+        a1.add();
+        a1.add();
+        a1.add();
+        a1.add():
+        System.out.println(a1);
+        Iterator<Integer>itr=a1.iterator();
+        while(itr.hasNext()){
+            System.out.println(itr.next());        
 
         try {
 Class.forName("com.mysql.cj.jdbc.Driver");
