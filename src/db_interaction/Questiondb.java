@@ -28,12 +28,18 @@ public class Questiondb {
 
         try {
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/project__questiondb","root","root");
-conn.createStatement();
-Statement statement =conn.createStatement();
-statement.execute(sql);
-conn.close();
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/project__questiondb","root","root");
+PreparedStatement statement=con.prepareStatement("insert into questions(test1,test2,test3,test4,test5)values(?,?,?,?,?)");
+statement.setString(1,"first question");
+statement.setString(2,"second question");
+statement.setString(3,"third question");
+statement.setString(4,"fourth question");
+statement.setString(5,"fifth question");
+int i=statement.executeUpdate();
+System.out.println("Done");
+con.close();
 statement.close();
+				
 
         } catch (Exception e) {
           e.printStackTrace();  
