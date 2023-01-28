@@ -4,6 +4,7 @@ public class Student {
     private int id;
     private String username;
     private String password;
+    private String score;
 
     public Student() {
     }
@@ -38,6 +39,14 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public int getScore(){
+        return score;
+    }
+    
+    public void setScore(){
+        this.score = score;
     }
 
     
