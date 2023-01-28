@@ -1,46 +1,61 @@
 package db_interaction;
-
+// Developed by Aniruddha
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.transform.Result;
+
 import java.util.*;
 
 import utility_classes.Question;
 
 public class Questiondb {
 
-    private Connection connection;
+    private static Connection connection;
     public Questiondb(Connection connection){
         this.connection = connection;
     }
 
     public static List<Question> getRandomQuestions(){
         ArrayList<Question> a1= new ArrayList<>();
-        a1.add();
-        a1.add();
-        a1.add();
-        a1.add();
-        a1.add():
-        System.out.println(a1);
-        Iterator<Integer>itr=a1.iterator();
-        while(itr.hasNext()){
-            System.out.println(itr.next());        
+                      
 
         try {
-Class.forName("com.mysql.cj.jdbc.Driver");
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/project__questiondb","root","root");
-PreparedStatement statement=con.prepareStatement("insert into questions(test1,test2,test3,test4,test5)values(?,?,?,?,?)");
-statement.setString(1,"first question");
-statement.setString(2,"second question");
-statement.setString(3,"third question");
-statement.setString(4,"fourth question");
-statement.setString(5,"fifth question");
-int i=statement.executeUpdate();
-System.out.println("Done");
-con.close();
-statement.close();
-				
-
-
+        	Statement statement=connection.createStatement();
+        	ResultSet rs=statement.executeQuery("select * from questions");
+        	while(rs.next()) {
+        		Question question=new Question();
+        		question.setQuestion(rs.getString("question"));
+        		question.setQuestion(rs.getString("opt 1"));
+        		question.setQuestion(rs.getString("opt 2"));
+        		question.setQuestion(rs.getString("opt 3"));
+        		question.setQuestion(rs.getString("opt 4"));
+        		question.setAns(rs.getInt("ans"));
+        		Question.add(question);
+        		
+        	}
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        Collections.shuffle(a1);
+        return a1;
+    }
+    public void saveScore(String username,int score) {
+    	try {
+    		PreparedStatement ps=connection.prepareStatement("insert into score values(?,?,?,?)");
+    		ps.setString(1, username);
+    		ps.setInt(2,score);
+    		ps.executeUpdate();
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
 }
+
 
