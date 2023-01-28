@@ -18,14 +18,16 @@ public class Questiondb {
         List<Question> questions = new ArrayList<>();
 
         try {
-            
-
-
-
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/project__questiondb","root","root");
+			conn.createStatement();
+			Statement statement =conn.createStatement();
+			statement.execute(sql);
+			conn.close();
+			statement.close();
 
         } catch (Exception e) {
-            // TODO: handle exception
+          e.printStackTrace();  
         }
 
         //shuffle questions here
